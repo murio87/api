@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+
+    <main class=" d-flex form-signin w-100 mt-5 align-items-center justify-content-center mx-auto">
+        <form class="mt-5" method="post" action="{% url 'subscrip-url' %}">{% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal text-center">Basic Package</h1>
+
+            <label for="floatingInput">Amount Ksh Per Month</label>
+            <input name="price" type="text" class="form-control" id="floatingInput" value="1,000" readonly>
+
+
+            <label for="floatingPassword">Phone Number</label>
+            <input name="phone" required type="text" class="form-control" id="floatingPassword" placeholder="2547...">
+
+            <button class="btn btn-primary w-100 py-2 my-3" type="submit">Press to Pay</button>
+        </form>
+    </main>
+{% endblock %}
+
+
+

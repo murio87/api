@@ -1,0 +1,45 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+    <style>
+        .blo_post_home_feed{
+            background-color: lightcyan;
+            border-radius: 10px;
+        }
+    </style>
+    <div class="hero">
+        <div class="container">
+            <section class="container d-flex flex-column justify-content-center align-items-center">
+                <div class="container d-flex flex-column justify-content-center align-items-center col-lg-12 col-md-12 col-12">
+                    <h1 class="text-center">Welcome to VintageVirtue</h1>
+                    <p class="text-center" style="font-size: 20px; font-weight: 500;">Buy and Sell Your Vintage Items with Hassle-free</p>
+                    <button class="btn btn-success">SHOP NOW</button>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="container mt-5 my-2 d-flex flex-column blo_post_home_feed">
+        <div class="d-flex flex-column mt-5 col-lg-4">
+            <textarea readonly placeholder="What are you selling today?" name="" id="" cols="60" rows="0" style="padding: 5px"></textarea>
+            <a href="{% url 'create-url' %}" class="btn btn-success mt-1" style="width: 200px; font-size:15px;font-weight: 500">Create a sell post</a>
+        </div>
+        <div>
+            {% if messages %}
+                <ul class="messages list-unstyled ">
+                    {% for message in messages %}
+                        <li  style="color: green;font-size: 30px; text-align: center" {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        <div class="row">
+            {% for post in blog_posts %}
+                <div class="col-lg-6  col-12 d-flex">
+                    <div class="container mb-4">
+                        {% include 'post/blog_post_snippet.html' with blog_post=post %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

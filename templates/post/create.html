@@ -1,0 +1,31 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container pt-5">
+        <div class="col-lg-7 offset-lg-1 mt-5 pt-5 mx-auto">
+            <form method="post" class="create-form" enctype="multipart/form-data">{% csrf_token %}
+                <div class="form-group">
+                    <label for="id_title">Brand</label>
+                    <input type="text" class="form-control" name="title" id="id_title" placeholder="Brand"
+                           required>
+                </div>
+                <div class="form-group">
+                    <label for="id_body">Details</label>
+                    <textarea type="text" class="form-control" name="body" id="id_body" placeholder="Sell information"
+                              required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="id_image"></label>
+                    <input type="file" name="image" id="id_image" accept="image/*" required>
+                </div>
+                <div class="form-group">
+                    <label for="id_price">Price</label>
+                    <input type="text" class="form-control" name="price" id="id_price" placeholder="Amount"
+                           required>
+                </div>
+                <button class="btn btn-success submit-button" type="submit">Make A Sell</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

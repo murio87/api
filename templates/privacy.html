@@ -1,0 +1,40 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="d-flex flex-column">
+            <h3>Privacy Policy</h3>
+
+            <p><small>Effective Date: 1-11-2023</small></p>
+            <br>
+            <h4>Introduction:</h4>
+            <p>Welcome to VintageVirtue! This Privacy Policy explains how we collect, use, and protect your personal information when you use our website and services.</p>
+            <br>
+            <h5>Usage Information:</h5>
+            <p>We collect information about how you interact with our platform, browser type, and device information.</p>
+
+            <br>
+            <h5>How We Use Your Information:</h5>
+            <p>We use your personal information to provide, personalize, and improve our services.</p>
+            <p>Your information may be used for account management and communication with you.</p>
+
+            <br>
+            <h5>Sharing Your Information:</h5>
+            <p>We may share your information with third-party service providers for the purpose of providing and improving our services.</p>
+            <p>Your information may be shared with other users when you engage in transactions on our platform.</p>
+
+            <br>
+            <h5>Your Choices:</h5>
+            <p>You have the right to access and correct your personal information. You can manage your preferences in your profile.</p>
+
+            <br>
+            <h5>Changes to this Privacy Policy:</h5>
+            <p>We may update this Privacy Policy to reflect changes in our practices. We will notify you of any significant changes.</p>
+
+            <br>
+            <h5>Contact Us:</h5>
+            <p>If you have questions or concerns about this Privacy Policy, please  <a href="{% url 'contact-url' %}">Contact us</a></p>
+        </div>
+    </div>
+{% endblock %}

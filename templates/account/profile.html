@@ -1,0 +1,39 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block content %}
+   <main class="d-flex form-signin w-100 mt-5 align-items-center justify-content-center mx-auto">
+        <form class="mt-5" method="post">{% csrf_token %}
+            <h1 class="h3 mb-3 fw-normal text-center">Profile</h1>
+            <label for="floatingInput">Email address</label>
+            <input name="email" type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                   value="{{ account_form.initial.email }}">
+
+
+            <label for="floatingPassword">Username</label>
+            <input name="username" type="text" class="form-control" id="inputusername" placeholder="Username"
+                   value="{{ account_form.initial.username }}">
+            {% for field in account_form  %}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                {% endfor %}
+            {% endfor %}
+
+
+            {% if account_form.non_field_errors %}
+                <div style="color: red;">
+                    <p>{{ account_form.non_field_errors }}</p>
+                </div>
+            {% endif %}
+            {% if success_message %}
+            	<p style="color: #1c7430; text-align: center">{{ success_message }}</p>
+            {% endif %}
+
+            <button class="btn mt-3 btn-primary w-100 py-2" type="submit">Save changes</button>
+        </form>
+    </main>
+    <div class="d-flex flex-column mb-5">
+            <a href="{% url 'password_change' %}" class="m-auto">Change password</a>
+        </div>
+
+
+{% endblock %}

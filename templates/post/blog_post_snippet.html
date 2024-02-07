@@ -1,0 +1,55 @@
+<style>
+    .blo_post_home{
+        background-color: white;
+        border-radius: 10px;
+        min-height: 350px;
+        height: 100%;
+        padding:5px;
+    }
+</style>
+{% if blog_post %}
+    <div class="mt-5">
+        <div class="container blo_post_home">
+            <article class="media content-section ">
+                <div class="media-body d-flex justify-content-around row">
+
+                    <div class="parag col-lg-6 col-md-6 col-12">
+                        <small class="text-muted">BRAND</small>
+                        <h2 class="article-title"><a class="text-decoration-none" href="{% url 'detail-url' post.slug %}">{{ blog_post.title }}</a> </h2>
+                        <small class="text-muted" style="font-weight: 500;font-size: 20px">DETAILS</small>
+                        <p class="article-content">{{ blog_post.body }}</p>
+                        <p class="article-content">Price: {{ blog_post.price }}</p>
+
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <label class="text-center font-weight-bold" style="color: #1e7e34;">Image</label>
+                        <div>
+                            <img class="postimage img-thumbnail" style="cursor: pointer;" src="{{ blog_post.image.url }}" alt="">
+
+                        </div>
+                        <div class="fb-share-button"
+                             data-href="{{ request.build_absolute_uri }}"
+                             data-layout="button"
+                             data-size="small">
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+    </div>
+    <!-- Initialize Facebook SDK -->
+    <script>
+        $(document).ready(function() {
+            FB.init({
+                appId: '1500350990535290',
+                autoLogAppEvents: true,
+                xfbml: true,
+                version: 'v13.0'
+            });
+        });
+    </script>
+{% endif %}
+
+
+

@@ -1,0 +1,44 @@
+{% extends 'master.html' %}
+{% load static %}
+<style>
+    p{
+        color: red;
+    }
+</style>
+
+{% block content %}
+    <div class="mt-5 pt-5">
+        <div class="container mt-3">
+            <article class="media content-section">
+                <div class="media-body d-flex justify-content-around align-items-center">
+                    <div class="parag">
+                        <small class="text-muted">BRAND</small>
+                        <h2 class="article-title"> {{ blog_post.title }}</h2>
+                        <small class="text-muted" style="font-weight: 500;">DETAIL</small>
+                        <p class="article-content">{{ blog_post.body }}</p>
+                        <p class="article-content">Price: {{ blog_post.price }}</p>
+                        <div>
+                            {% if blog_post.author == request.user %}
+                                <a href="{% url 'edit-url' blog_post.slug %}" class="btn btn-info mr3">Edit</a>
+                            {% endif %}
+                            {% if blog_post.author == request.user %}
+                                <a href="{% url 'delete-blog-url' blog_post.slug %}" class="btn btn-danger">Delete</a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                    <div>
+                        <label class="text-center font-weight-bold" style="color: orangered">Image</label>
+                        <div>
+                            <img class="postimage img-thumbnail" src="{{ blog_post.image.url }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </article>
+        </div>
+
+    </div>
+
+{% endblock %}
+

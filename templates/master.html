@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>VintageVirtue</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+    <!--start of CSS connection-->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <!--end of CSS connection-->
+    <!--start of fontawesome-->
+    <link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v13.0&appId=1500350990535290" nonce="YOUR_NONCE"></script>
+    <!--end of fontawesome-->
+</head>
+<style>
+    .navbar-brand h3{
+        font-weight: 700;
+    }
+    .navbar-nav li a{
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 20px;
+        padding-left: 5px;
+        color: #f2f2f2;
+    }
+    .navbar{
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        width: 100%;
+    }
+    .main{
+        min-height: 60vh;
+        height: 100%;
+    }
+    .footer-one .payment i:nth-child(1){
+        font-size: 40px;
+        margin-right: 0;
+    }
+    .footer-one .payment i:nth-child(2){
+        font-size: 35px;
+        margin-right: 5px;
+    }
+    .footer-one .payment i:nth-child(3){
+        font-size: 35px;
+        margin-right: 5px;
+    }
+    .footer-one .payment i:nth-child(4){
+        font-size: 35px;
+        margin-right: 5px;
+    }
+    .footer-one .payment i:nth-child(5){
+        font-size: 35px;
+        margin-right: 5px;
+    }
+    .footer-one i{
+        font-size: 18px;
+        margin-right: 5px;
+    }
+    .footer-one a{
+        text-decoration: none;
+        padding-bottom: 8px;
+    }
+</style>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <div class="container">
+        <a class="mr-auto navbar-brand" href="{% url 'home-url' %}"><h3>VintageVirtue</h3></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    {% if request.user.is_authenticated %}
+                        <a href="{% url 'home-url' %}">Home</a>
+                        <a href="{% url 'profile-url' %}">Profile</a>
+                        <a href="{% url 'logout-url' %}">Logout</a></p>
+                        <p style="color: white; font-weight: 400;">Welcome {{ request.user.username }}
+                            <a href="{% url 'subscrip-url' %}">Subscribe</a>
+                        </p>
+                    {% else %}
+                        <p>
+                            <a href="{% url 'home-url' %}">Home</a>
+                            <a href="{% url 'login-url' %}">Login</a>
+                        </p>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="main">
+    {% block content %}
+
+    {% endblock %}
+</div>
+
+
+
+
+
+
+
+
+<!--start of JS connection-->
+<script src="{% static 'js/jquery-3.4.0.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<!--end of JS connection-->
+</body>
+<footer class="mt-5 py-5 container-fluid">
+    <div class="row">
+        <div class="footer-one col-lg-4 col-md-4 col-12">
+            <a style="font-size: 20px;font-weight: 400" href="{% url 'home-url' %}">VintageVirtue</a>
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Lumumba Drive Roysambu Kenya</p>
+            <p><strong>Phone:</strong> +254 7234543212</p>
+            <p><strong>Hours:</strong> 08:00 - 17:00, Mon - Sat</p>
+            <div class="follow">
+                <h5>Follow Us</h5>
+                <div class="icon">
+                    <a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://twitter.com"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://instagram.com"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://youtube.com"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://pinterest.com"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-one col-lg-4 col-md-4 col-12 flex-column d-flex">
+            <h4>About</h4>
+            <a href="{% url 'about-url' %}">About Us</a>
+            <a href="{% url 'privacy-url' %}">Privacy Policy</a>
+            <a href="{% url 'conditions-url' %}">Terms & Conditions</a>
+            <a href="{% url 'contact-url' %}">Contact Us</a>
+        </div>
+        <div class="footer-one col-lg-4 col-md-4 col-12">
+            <h4>Install App</h4>
+            <p>From App Store or Google Play</p>
+            <div class="row">
+                <img class="img-fluid" style="width: 150px;margin-right: 5px;margin-bottom: 5px;margin-left: 5px;border-radius: 5px" src="{% static 'images/installation/appstoretwo.png' %}" alt="App Store">
+                <img class="img-fluid" style="width: 150px;border-radius: 5px;margin-bottom: 5px;margin-left: 5px" src="{% static 'images/installation/Googleplaytwo.jpg.png' %}" alt="Google Play">
+            </div>
+            <p>We Accept</p>
+            <p class="payment"><i class="fa-brands payment"><img class="mpesa" src="{% static 'images/payments/mpesa.png' %}" alt=""></i> <i class="payment fa-brands fa-cc-mastercard"></i> <i class="payment fa-brands fa-cc-visa"></i> <i class="payment fa-brands fa-cc-paypal"></i></p>
+        </div>
+    </div>
+    <div class="row text-center mx-auto">
+        <p class="mx-auto">&copy; 2023,VintageVirtue Copyrights.</p>
+    </div>
+</footer>
+</html>
+

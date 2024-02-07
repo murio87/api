@@ -1,0 +1,12 @@
+{% extends 'master.html' %}
+{% block content %}
+	<div class="container my-5">
+        <div class="d-flex flex-column my-5">
+            <p class="m-auto">Authenticate</p>
+            <p class="m-auto">
+                <a href="{% url 'register-url' %}">Register</a> or
+                <a href="{% url 'login-url' %}">Login</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
